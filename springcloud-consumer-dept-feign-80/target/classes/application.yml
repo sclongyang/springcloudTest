@@ -1,0 +1,13 @@
+server:
+  port: 80
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eeureka7001.com:7001/eureka/,http://eeureka7002.com:7002/eureka/,http://eeureka7003.com:7003/eureka/
+    register-with-eureka: false #消费者无需向eurekaserver注册自己
+
+#开启服务降级
+#feign:
+#  hystrix:
+#    enabled: true
