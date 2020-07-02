@@ -13,12 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.sound.midi.Soundbank;
 import javax.websocket.server.PathParam;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class DeptController {
     @Autowired
     private DeptService deptService;
+
+    @GetMapping("/dept/list")
+    @HystrixCommand(fallbackMethod = "hystrixGetAll")
+    public List<Dept> queryAll(){
+        return deptService.queryAll();
+    }
 
     @GetMapping("/dept/get/{id}")
     @HystrixCommand(fallbackMethod = "hystrixGet")
@@ -35,6 +42,12 @@ public class DeptController {
 
     public Dept hystrixGet(@PathVariable("id") Long id){
         return new Dept().setDname("熔断保护").setDeptno(id).setDb_source("wrong");
+    }
+
+    public List<Dept> hystrixGetAll(){
+        List<Dept> depts = new ArrayList<Dept>();
+        depts.add(new Dept().setDname("熔断保护").setDeptno(333).setDb_source("wrong"));
+        return depts;
     }
 
 }
