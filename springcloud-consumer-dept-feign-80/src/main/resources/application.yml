@@ -8,6 +8,6 @@ eureka:
     register-with-eureka: false #消费者无需向eurekaserver注册自己
 
 #开启服务降级
-#feign:
-#  hystrix:
-#    enabled: true
+feign:
+  hystrix:
+    enabled: true

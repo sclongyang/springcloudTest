@@ -1,13 +1,16 @@
 package com.fermi.could.service;
 
 import com.fermi.could.pojo.Dept;
+import com.fermi.could.service.DeptClientService;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
 //用于服务降级
+@Component
 public class DeptClientServiceFallbackFactory implements FallbackFactory {
     @Override
     public DeptClientService create(Throwable throwable) {

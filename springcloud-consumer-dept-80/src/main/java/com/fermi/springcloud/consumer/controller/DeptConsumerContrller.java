@@ -23,11 +23,12 @@ public class DeptConsumerContrller {
 
     @RequestMapping("/consumer/dept/add")
     public boolean add(Dept dept){
-         return restTemplate.postForObject(RESTFULL_URL_PREFIX + "/dept/add", dept, Boolean.class);
+         return     restTemplate.postForObject(RESTFULL_URL_PREFIX + "/dept/add", dept, Boolean.class);
     }
 
     @RequestMapping("/consumer/dept/get/{id}")
     public Dept get(@PathVariable("id") Long id){
+        System.out.println("执行了dept80的get");
         return restTemplate.getForObject(RESTFULL_URL_PREFIX + "/dept/get/" + id, Dept.class);
     }
 

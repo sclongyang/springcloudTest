@@ -25,6 +25,7 @@ public class DeptConsumerContrller {
 
     @RequestMapping("/consumer/dept/get/{id}")
     public Dept get(@PathVariable("id") Long id){
+        System.out.println("step in consumer feign-80: get " +id);
         return deptClientService.queryById(id);
     }
 
